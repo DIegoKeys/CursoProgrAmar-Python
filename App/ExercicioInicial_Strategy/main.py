@@ -10,7 +10,8 @@ from buttonEnum import *
 
 class MinhaJanela:
     def __init__(self,tkJanela):
-        self.lstbxPreferencias = Listbox(tkJanela, height=13, width=50)
+        self.lstbxPreferencias = Listbox(tkJanela, height=19, width=55)
+
         # self.btnMensagem = Button(tkJanela, text='Mensagem',command=self.eventoMensagem,width=30)
         # self.btnDesvCond= Button(tkJanela,text='Desvio Condicional', command=self.eventoDesvCond,width=30)
         # self.btnDesvCondEncad = Button(tkJanela, text='Desvio Condicional Encadeado',command=self.eventButton,width=30)
@@ -45,6 +46,11 @@ class MinhaJanela:
         self.btnImpBDDesconectado = Button(tkJanela, height=self.button_height, width=self.button_width,
                                         text="Importa BD Desconectado",
                                         command=lambda btn=ButtonEnum.btnImpBDDesconectado,
+                                                       lstbx=self.lstbxPreferencias: ButtonEnum.do_task(btn, lstbx))
+
+        self.btnConsultarBD = Button(tkJanela, height=self.button_height, width=self.button_width,
+                                        text="Consultar BD ",
+                                        command=lambda btn=ButtonEnum.btnConsultarBD,
                                                        lstbx=self.lstbxPreferencias: ButtonEnum.do_task(btn, lstbx))
 
         self.btnMensagem.place(x=10,y=self.y_position)
@@ -167,5 +173,5 @@ class MinhaJanela:
 objJanela = Tk()
 objMinhaJanela = MinhaJanela(objJanela)
 objJanela.title('Hello Python')
-objJanela.geometry("600x350+10+10")
+objJanela.geometry("600x525+10+10")
 objJanela.mainloop()
