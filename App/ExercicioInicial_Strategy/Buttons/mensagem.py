@@ -1,7 +1,7 @@
 import sys
 import tkinter.messagebox
 
-sys.path.append('H:\\ToscanoAulas\\ProjetoToscano\\CursoProgrAmar-Python\\App\\ExercicioInicial_Strategy\\Buttons')
+sys.path.append('D:\\Dados\\GitHub\\DIegoKeys\\CursoProgrAmar-Python\\App\\ExercicioInicial_Strategy\\Buttons')
 
 import modelButton
 
