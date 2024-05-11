@@ -10,8 +10,8 @@ from tkinter import ttk
 
 class MinhaJanela:
     def __init__(self,tkJanela):
-        self.lstbxPreferencias = Listbox(tkJanela, height=19, width=55)
-        self.dtgdvwtvPreferencias = ttk.Treeview(tkJanela, columns=['Descricao',], height=6, show='headings')
+        self.lstbxPreferencias = Listbox(tkJanela, height=19, width=65)
+        self.dtgdvwtvPreferencias = ttk.Treeview(tkJanela, columns=('ID','Descricao'), height=6, show='headings')
         self.barraDeRolagem = tkinter.Scrollbar(tkJanela, orient="vertical", command=self.dtgdvwtvPreferencias.yview)
 
         # self.btnMensagem = Button(tkJanela, text='Mensagem',command=self.eventoMensagem,width=30)
@@ -54,6 +54,18 @@ class MinhaJanela:
                                         text="Consultar BD ",
                                         command=lambda btn=ButtonEnum.btnConsultarBD,
                                                        trvw=self.dtgdvwtvPreferencias: ButtonEnum.do_task(btn, trvw))
+        self.btnIncluirBD = Button(tkJanela, height=self.button_height, width=self.button_width,
+                                     text="Incluir BD ",
+                                     command=lambda btn=ButtonEnum.btnIncluirBD,
+                                                    trvw=self.dtgdvwtvPreferencias: ButtonEnum.do_task(btn, trvw))
+        self.btnExcluirBD = Button(tkJanela, height=self.button_height, width=self.button_width,
+                                     text="Excluir BD ",
+                                     command=lambda btn=ButtonEnum.btnExcluirBD,
+                                                    trvw=self.dtgdvwtvPreferencias: ButtonEnum.do_task(btn, trvw))
+        self.btnAtualizarBD = Button(tkJanela, height=self.button_height, width=self.button_width,
+                                     text="Atualizar BD ",
+                                     command=lambda btn=ButtonEnum.btnAtualizarBD,
+                                                    trvw=self.dtgdvwtvPreferencias: ButtonEnum.do_task(btn, trvw))
 
         self.btnMensagem.place(x=10,y=self.y_position)
         self.btnDesvCond.place(x=10,y=self.y_position + self.spacing)
@@ -65,6 +77,9 @@ class MinhaJanela:
         self.btnImpBDConectado.place(x=10, y=self.y_position + self.spacing * 7)
         self.btnImpBDDesconectado.place(x=10, y=self.y_position + self.spacing * 8)
         self.btnConsultarBD.place(x=10, y=self.y_position + self.spacing * 10)
+        self.btnIncluirBD.place(x=10, y=self.y_position + self.spacing * 11)
+        self.btnExcluirBD.place(x=10, y=self.y_position + self.spacing * 12)
+        self.btnAtualizarBD.place(x=10, y=self.y_position + self.spacing * 13)
 
         # for btn in ButtonEnum:
         #     button = Button(tkJanela, text=f"Button {btn.name}", command=lambda b=btn: ButtonEnum.do_task(b))
@@ -73,9 +88,10 @@ class MinhaJanela:
         self.lstbxPreferencias.grid(row=0,column=0)
         self.lstbxPreferencias.place(x=250,y=10)
         self.dtgdvwtvPreferencias.place(x=250, y=360)
-        self.barraDeRolagem.place(x=455, y=360, width=20, height=155)
+        self.barraDeRolagem.place(x=650, y=360, width=20, height=155)
 
         self.dtgdvwtvPreferencias.configure(yscrollcommand=self.barraDeRolagem.set)
+        # self.dtgdvwtvPreferencias.bind('<<TreeviewSelect>>', self.on_item_selected)
         # self.btnMensagem.place(x=10,y=10)
         # self.btnDesvCond.place(x=10, y=40)
         # self.btnDesvCondEncad.place(x=10, y=70)
@@ -85,6 +101,13 @@ class MinhaJanela:
         # self.btnImportarTxtForeach.place(x=10, y=190)
         # self.btnImportarBDConectado.place(x=10, y=220)
         # self.btnImportarBDDesconectado.place(x=10, y=250)
+    # def on_item_selected(self,event):
+    #     selected_item = self.dtgdvwtvPreferencias.selection()
+    #     if selected_item:
+    #         item = self.dtgdvwtvPreferencias.item(selected_item)
+    #         selected_id = item['values'][0]
+    #         print("ID Selecionado:", selected_id)
+    #         return
 
     # @staticmethod
     # def preencherListBox(listPreferencias, self=None):
@@ -180,5 +203,6 @@ class MinhaJanela:
 objJanela = Tk()
 objMinhaJanela = MinhaJanela(objJanela)
 objJanela.title('Hello Python')
-objJanela.geometry("600x525+10+10")
+objJanela.geometry("690x525+10+10")
 objJanela.mainloop()
+

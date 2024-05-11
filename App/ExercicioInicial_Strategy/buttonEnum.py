@@ -1,6 +1,6 @@
 from Buttons import (
     mensagem,desvCond,desvCondEncad,matchCase,impTxtWhile,impTxtFor,impTxtForeach,
-    impBDConectado,impBDDesconectado, consultarBD)
+    impBDConectado,impBDDesconectado, consultarBD,incluirBD,excluirBD,atualizarBD)
 from enum import Enum,auto
 class ButtonEnum(Enum):
     btnMensagem = auto()
@@ -13,6 +13,9 @@ class ButtonEnum(Enum):
     btnImpBDConectado = auto()
     btnImpBDDesconectado = auto()
     btnConsultarBD = auto()
+    btnIncluirBD = auto()
+    btnExcluirBD = auto()
+    btnAtualizarBD = auto()
 
 
     @staticmethod
@@ -29,6 +32,11 @@ class ButtonEnum(Enum):
             ButtonEnum.btnImpBDConectado: lambda: impBDConectado.ImpBDConectado.acaoDeEvento(objVisual),
             ButtonEnum.btnImpBDDesconectado: lambda: impBDDesconectado.ImpBDDesconectado.acaoDeEvento(objVisual),
             ButtonEnum.btnConsultarBD: lambda: consultarBD.ConsultarBD.acaoDeEvento(objVisual),
+            ButtonEnum.btnIncluirBD: lambda: incluirBD.IncluirBD.acaoDeEvento(objVisual),
+            ButtonEnum.btnExcluirBD: lambda: excluirBD.ExcluirBD.acaoDeEvento(objVisual),
+            ButtonEnum.btnAtualizarBD: lambda: atualizarBD.AtualizarBD.acaoDeEvento(objVisual),
+
+
         }
         action = actions.get(button)
         if action:
