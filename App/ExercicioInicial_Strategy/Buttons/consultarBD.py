@@ -21,8 +21,12 @@ class ConsultarBD(ButtonAction):
         #     treeView.heading(cols[i])
         #     treeView.column(cols[i], width=colsSize[i], anchor=colsAnchor[i])
 
+        treeView.heading('ID', text='ID')
         treeView.heading("Descricao", text="Descricao")
+        treeView.column("ID", width=100, anchor=tkinter.W)
         treeView.column("Descricao", width=100, anchor=tkinter.W)
+
+
 
         #Deleto todos os elementos existentes anteriormente na treeView para zerá-la
         treeView.delete(*treeView.get_children())
@@ -33,7 +37,7 @@ class ConsultarBD(ButtonAction):
         objConn = pyodbc.connect(conn_str)
         objLeitorBD = objConn.cursor()
 
-        strSql = "SELECT Descricao FROM Preferencias_1_Manual_Toscano"
+        strSql = "SELECT ID, Descricao FROM Preferencias_3;"
 
         objLeitorBD.execute(strSql)
         records = objLeitorBD.fetchall()
